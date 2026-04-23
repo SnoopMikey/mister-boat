@@ -38,7 +38,6 @@ async function buildScripts() {
   // same pattern as the prototype). esbuild just strips JSX and minifies.
   await esbuild.build({
     entryPoints: [
-      path.join(SRC, 'ios-frame.jsx'),
       path.join(SRC, 'tweaks-panel.jsx'),
       path.join(SRC, 'app.jsx'),
     ],
