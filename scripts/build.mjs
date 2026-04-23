@@ -62,7 +62,7 @@ async function writeIndexAndSW() {
   const html = await readFile(path.join(ROOT, 'public/index.html'), 'utf8');
   // Cache-bust script refs with content hashes so SW updates pick up new code.
   const scripts = ['vendor/react.production.min.js', 'vendor/react-dom.production.min.js',
-                   'ios-frame.js', 'tweaks-panel.js', 'app.js'];
+                   'tweaks-panel.js', 'app.js'];
   const hashes = {};
   for (const s of scripts) hashes[s] = await hashFile(path.join(DIST, s));
   let out = html;
