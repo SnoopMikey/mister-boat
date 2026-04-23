@@ -366,7 +366,7 @@ function Home({ onGo, departProgress, dockProgress, captainName, lastVoyage }) {
   return (
     <div style={{ position: 'relative', minHeight: '100%', paddingBottom: 40 }}>
       <PaperBackdrop />
-      <div style={{ position: 'relative', padding: '52px 22px 0' }}>
+      <div style={{ position: 'relative', padding: 'calc(env(safe-area-inset-top, 0px) + 14px) 22px 0' }}>
         <div style={{
           display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between'
         }}>
@@ -577,10 +577,10 @@ function ChecklistScreen({ title, subtitle, mood, accent, secondary, data, state
   const allDone = pct === 100;
 
   return (
-    <div style={{ position: 'relative', minHeight: '100%', paddingBottom: 120 }}>
+    <div style={{ position: 'relative', minHeight: '100%', paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 130px)' }}>
       <PaperBackdrop />
 
-      <div style={{ position: 'relative', padding: '56px 18px 0' }}>
+      <div style={{ position: 'relative', padding: 'calc(env(safe-area-inset-top, 0px) + 16px) 18px 0' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <button onClick={onBack} style={{
             background: 'transparent', border: `1.5px solid ${MB.ink}`,
@@ -699,7 +699,7 @@ function ChecklistScreen({ title, subtitle, mood, accent, secondary, data, state
 
       <div style={{
         position: 'absolute', left: 0, right: 0, bottom: 0,
-        padding: '14px 18px 22px',
+        padding: '14px 18px calc(env(safe-area-inset-bottom, 0px) + 22px)',
         background: `linear-gradient(180deg, transparent, ${MB.paper} 40%)`
       }}>
         <button
@@ -732,7 +732,7 @@ function DoneScreen({ mode, onHome, onRepeat }) {
       <PaperBackdrop tone={isDepart ? MB.paper : MB.paperDeep} />
       <div style={{
         position: 'relative',
-        padding: '100px 24px 0',
+        padding: 'calc(env(safe-area-inset-top, 0px) + 56px) 24px 0',
         textAlign: 'center',
         display: 'flex', flexDirection: 'column', alignItems: 'center'
       }}>
@@ -880,11 +880,12 @@ function App() {
 
   return (
     <div style={{
-      position: 'absolute', inset: 0,
+      position: 'relative',
+      minHeight: '100dvh',
       background: MB.paper,
       color: MB.ink,
       fontFamily: "'Work Sans', sans-serif",
-      overflowY: 'auto'
+      overflowX: 'hidden'
     }}>
       {screen === 'home' &&
       <Home
@@ -965,14 +966,4 @@ function TweaksUI({ tweaks, setTweaks }) {
 
 }
 
-function Shell() {
-  return (
-    <IOSDevice width={402} height={874} dark={false} showStatusBar={true}>
-      <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', borderRadius: 44 }}>
-        <App />
-      </div>
-    </IOSDevice>);
-
-}
-
-ReactDOM.createRoot(document.getElementById('app-root')).render(<Shell />);
+ReactDOM.createRoot(document.getElementById('app-root')).render(<App />);
