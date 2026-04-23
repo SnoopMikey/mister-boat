@@ -1,0 +1,5 @@
+node_modules/
+dist/
+_extracted/
+.DS_Store
+.claude/

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Mister Boat — Checklist</title>
+
+<meta name="description" content="A whimsical, nautical checklist for casting off and docking up." />
+<meta name="theme-color" content="#0B2545" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Mister Boat" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  html, body { margin: 0; padding: 0; background: #1a2638; color: #f5eddd; font-family: 'Work Sans', system-ui, sans-serif; }
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex; align-items: center; justify-content: center;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 10%, #223350 0%, #131b29 80%);
+    padding: 24px;
+    box-sizing: border-box;
+    overscroll-behavior: none;
+  }
+  #device-stage { transform-origin: center; }
+  .mb-app { position: absolute; inset: 0; }
+  @keyframes mb-float {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-5px) rotate(1deg); }
+  }
+  @keyframes mb-stamp {
+    0% { transform: rotate(-8deg) scale(1.6); opacity: 0; }
+    60% { transform: rotate(-8deg) scale(0.9); opacity: 1; }
+    100% { transform: rotate(-8deg) scale(1); opacity: 1; }
+  }
+  @keyframes mb-pop {
+    0% { transform: scale(0.94); opacity: 0; }
+    60% { transform: scale(1.02); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  button:active { transform: translateY(1px); }
+  * { -webkit-tap-highlight-color: transparent; }
+  /* On phones (standalone PWA), let the device frame fill the screen. */
+  @media (max-width: 500px) {
+    body { padding: 0; background: #0B2545; }
+  }
+</style>
+</head>
+<body>
+  <div id="device-stage">
+    <div id="app-root"></div>
+  </div>
+
+<script src="vendor/react.production.min.js"></script>
+<script src="vendor/react-dom.production.min.js"></script>
+<script src="ios-frame.js"></script>
+<script src="tweaks-panel.js"></script>
+<script src="app.js"></script>
+
+<script>
+  function fit() {
+    const stage = document.getElementById('device-stage');
+    if (!stage) return;
+    const pad = window.innerWidth < 500 ? 0 : 40;
+    const w = window.innerWidth - pad;
+    const h = window.innerHeight - pad;
+    const scale = Math.min(w / 402, h / 874, 1.1);
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  setTimeout(fit, 50);
+  setTimeout(fit, 250);
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+</script>
+</body>
+</html>

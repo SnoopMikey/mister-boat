@@ -1,0 +1,25 @@
+{
+  "name": "mister-boat",
+  "version": "1.0.0",
+  "description": "Mister Boat — nautical checklist PWA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs && python3 -m http.server 8000 --directory dist",
+    "icons": "node scripts/make-icons.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "private": "true",
+  "devDependencies": {
+    "esbuild": "^0.28.0",
+    "sharp": "^0.34.5"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
