@@ -287,8 +287,9 @@ function ChecklistRow({ item, checked, onToggle, accent }) {
       </div>
       <div style={{ minWidth: 0 }}>
         <div style={{
-          fontFamily: "'DM Serif Display', serif",
-          fontSize: 18, lineHeight: 1.15,
+          fontFamily: "'Work Sans', system-ui, sans-serif",
+          fontSize: 20, fontWeight: 600, lineHeight: 1.2,
+          letterSpacing: '-0.005em',
           color: MB.ink,
           opacity: checked ? 0.45 : 1,
           textDecoration: checked ? 'line-through' : 'none',
@@ -298,9 +299,9 @@ function ChecklistRow({ item, checked, onToggle, accent }) {
         }}>{item.t}</div>
         {item.hint &&
         <div style={{
-          marginTop: 2,
+          marginTop: 3,
           fontFamily: "'Work Sans', sans-serif",
-          fontSize: 12, letterSpacing: '0.01em',
+          fontSize: 13, lineHeight: 1.35, letterSpacing: '0.01em',
           color: MB.inkSoft, opacity: checked ? 0.35 : 0.75
         }}>{item.hint}</div>
         }

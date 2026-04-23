@@ -22,7 +22,7 @@
 <style>
   html, body {
     margin: 0; padding: 0;
-    background: #EADFC7;
+    background: #F5EDDD;
     color: #0B2545;
     font-family: 'Work Sans', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -39,8 +39,11 @@
     min-height: 100vh;
     min-height: 100dvh;
     background: #F5EDDD;
-    box-shadow: 0 0 40px rgba(11,37,69,0.08);
     position: relative;
+  }
+  @media (min-width: 500px) {
+    html, body { background: #EADFC7; }
+    #app-root { box-shadow: 0 0 40px rgba(11,37,69,0.08); }
   }
   @keyframes mb-float {
     0%, 100% { transform: translateY(0) rotate(-1deg); }
